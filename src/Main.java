@@ -16,7 +16,7 @@ public class Main {
                 for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
                     System.out.print(rs.getString(i + 1)+" ");
                 }
-                System.out.println();
+                System.out.println("si");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
