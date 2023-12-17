@@ -31,13 +31,10 @@ public class DataBase {
         stmt.executeUpdate("CREATE SCHEMA IF NOT EXISTS Tienda");
         stmt.executeUpdate("USE Tienda");
         stmt.execute("DROP TABLE IF EXISTS Cliente;");
-        stmt.execute("CREATE TABLE IF NOT EXISTS Cliente (id INT NOT NULL AUTO_INCREMENT, user VARCHAR(20), password VARCHAR(15), PRIMARY KEY (id));");
+        stmt.execute("CREATE TABLE IF NOT EXISTS Cliente (id INT NOT NULL AUTO_INCREMENT, user VARCHAR(20), password VARCHAR(15), gastoTotal FLOAT(10,2), PRIMARY KEY (id));");
         stmt.execute("DROP TABLE IF EXISTS Producto;");
         stmt.execute("CREATE TABLE IF NOT EXISTS Producto (id INT NOT NULL AUTO_INCREMENT, nombre VARCHAR(20), precio FLOAT(10,2), fecha_compra DATE, cliCliente INT, PRIMARY KEY (id), FOREIGN KEY (cliCliente) REFERENCES Cliente(id));");
         stmt.execute("INSERT INTO Cliente (user, password) VALUES ('Usuario', 'Contrasenia');");
-        stmt.execute("INSERT INTO Producto (nombre, precio, fecha_compra, cliCliente) VALUES ('Manzana', 1.00, '2020-01-01', 1);");
-        stmt.execute("INSERT INTO Producto (nombre,precio, fecha_compra, cliCliente) VALUES ('Pera', 2.00, '2020-01-01', 1);");
-
     }
 
     public void cerrar() {
