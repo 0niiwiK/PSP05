@@ -11,7 +11,8 @@ public class Visualizar_usuario {
     private JPanel jpanel1;
     private JPanel jp_image;
     private JLabel lbl_id;
-    
+    private JTextField textField1;
+
     public Visualizar_usuario() {
         tf_id.setEditable(false);
         
@@ -24,7 +25,7 @@ public class Visualizar_usuario {
         JFrame frame = new JFrame("Visualizar_usuario");
         frame.setContentPane(new Visualizar_usuario().jpanel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(500, 300);
         frame.setVisible(true);
     }
 }
