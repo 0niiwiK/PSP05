@@ -17,9 +17,9 @@ public class Visualizar_productos {
     private JPanel jp_fecha;
     private JLabel lbl_tit;
     private JPanel panel1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField tf_id;
+    private JTextField tf_nombre;
+    private JTextField tf_fecha;
     private final JDateChooser dateChooser = new JDateChooser();
     
     public Visualizar_productos() {

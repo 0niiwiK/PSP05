@@ -1,20 +1,31 @@
 package View;
 
+import Model.Cliente;
+import Model.MError;
+import Model.MiExcepcion;
+
 import javax.swing.*;
 
-public class Login extends JDialog{
+public class Login extends JDialog {
     private JButton btn_login;
     private JTextField tf_usuario;
     private JLabel lbl_login;
     private JButton btn_salir;
-    private JPasswordField pf_contraseña;
+    private JPasswordField pf_contrasenia;
     private JPanel panel1;
+    
+    public Login(Cliente[] cliente) {
+        setContentPane(panel1);
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Log In");
-        frame.setContentPane(new Login().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 250);
-        frame.setVisible(true);
+        btn_login.addActionListener(e -> {
+            try {
+                cliente[0] = new Controller.ClienteLogin(tf_usuario.getText(), String.valueOf(pf_contrasenia.getPassword())).getCliente();
+                this.setVisible(false);
+                this.dispose();
+                
+            } catch (MiExcepcion mie) {
+                JOptionPane.showMessageDialog(null, MError.getMensaje(mie.getCodigo()));
+            }
+        });
     }
 }

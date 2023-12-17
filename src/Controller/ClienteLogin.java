@@ -18,7 +18,7 @@ public class ClienteLogin {
             // Tomas: debe ser PreparedStatement.
             this.stmt = DataBase.getConn().createStatement();
             //rs = st.executeQuery("SELECT * FROM segundaTabla WHERE FK_de_Emplado = " + numero);
-            ResultSet rs = stmt.executeQuery("SELECT id FROM Cliente WHERE user = '" + user + "' AND password = '" + password + "';");
+            ResultSet rs = stmt.executeQuery("SELECT id FROM Cliente WHERE BINARY user = '" + user + "' AND password = '" + password + "';");
             rs.next();
             this.cliente = new Cliente(rs.getInt(1));
             getDatos();

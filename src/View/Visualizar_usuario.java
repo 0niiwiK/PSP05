@@ -23,12 +23,4 @@ public class Visualizar_usuario {
         jp_image.setLayout(new BorderLayout());
         jp_image.add(imageLabel, BorderLayout.CENTER);
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Visualizar_usuario");
-        frame.setContentPane(new Visualizar_usuario().jpanel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 600);
-        frame.setVisible(true);
-    }
 }
