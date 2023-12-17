@@ -13,6 +13,7 @@ public class Cliente {
     private String user;
     private float gastoTotal;
     private String password;
+    private String imagen;
 
     public Cliente(int id) {
         this.id = id;
@@ -48,5 +49,13 @@ public class Cliente {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
