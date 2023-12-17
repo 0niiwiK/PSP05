@@ -1,25 +1,11 @@
-import Controller.DataBase;
+package Controller;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Objects;
 
-public class Main {
-    public static void main(String[] args){
-        try {
-            DataBase db = new DataBase();
-            db.inicializar();
-            Statement stmt = db.obtenerStatement();
-            introducirProducto(stmt, "Manzana", 1.20f, 1);
-            introducirProducto(stmt, "Pera", 2.50f, 1);
-            ResultSet rs = stmt.executeQuery("SELECT gastoTotal FROM Cliente WHERE id = 1;");
-            rs.next();
-            System.out.println("Importe total: " + rs.getString("gastoTotal"));
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+public class ActualizarProducto {
 
     public static void introducirProducto(Statement stmt, String nombre_producto, float precio_producto, int id_cliente) throws SQLException {
         String sentencia = "SELECT gastoTotal FROM Cliente WHERE id = "+id_cliente+";";
