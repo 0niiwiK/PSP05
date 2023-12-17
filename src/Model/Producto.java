@@ -6,7 +6,6 @@
 package Model;
 
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Producto {
@@ -52,7 +51,11 @@ public class Producto {
         return fecha_compra;
     }
 
-    public java.sql.Date getFecha_compra_date() {
+    public java.util.Date getFecha_compra_date() {
+        return new java.util.Date(fecha_compra.getTimeInMillis());
+    }
+
+    public java.sql.Date getFecha_compra_sql() {
         return new java.sql.Date(fecha_compra.getTimeInMillis());
     }
 

@@ -148,7 +148,7 @@ public class ProductoBD {
         rs.updateInt(1, producto.getId());
         rs.updateString(2, producto.getNombre());
         rs.updateFloat(3, producto.getPrecio());
-        rs.updateDate(4, producto.getFecha_compra_date());
+        rs.updateDate(4, producto.getFecha_compra_sql());
         rs.updateInt(5, producto.getId_cliente());
         rs.updateRow();
         rs.moveToCurrentRow();
