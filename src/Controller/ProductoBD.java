@@ -9,6 +9,7 @@ import Model.Producto;
 
 import java.sql.*;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -129,12 +130,7 @@ public class ProductoBD {
     public void insertar(Producto producto) {
         try {
             rs.moveToInsertRow();
-            rs.updateInt(1,producto.getId());
-            rs.updateString(2,producto.getNombre());
-            rs.updateFloat(3,producto.getPrecio());
-            rs.updateDate(4, producto.getFecha_compra_date());
-            rs.insertRow();
-            rs.moveToCurrentRow();
+            insertarTabla(0, producto);
         } catch (SQLException ex) {
             Logger.getLogger(ProductoBD.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,15 +138,33 @@ public class ProductoBD {
     
     public void update(Producto producto) {
         try {
-            rs.updateInt(1,producto.getId());
-            rs.updateString(2,producto.getNombre());
-            rs.updateFloat(3,producto.getPrecio());
-            rs.updateDate(4,producto.getFecha_compra_date());
-            rs.updateRow();
-            rs.moveToCurrentRow();
+            insertarTabla(rs.getFloat(3), producto);
         } catch (SQLException ex) {
             Logger.getLogger(ProductoBD.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private static void insertarTabla(float precio_anterior, Producto producto) throws SQLException {
+        rs.updateInt(1, producto.getId());
+        rs.updateString(2, producto.getNombre());
+        rs.updateFloat(3, producto.getPrecio());
+        rs.updateDate(4, producto.getFecha_compra_date());
+        rs.updateInt(5, producto.getId_cliente());
+        rs.updateRow();
+        rs.moveToCurrentRow();
+        String sentencia = "SELECT gastoTotal FROM Cliente WHERE id = "+ producto.getId_cliente()+";";
+        Statement stmt_gasto = DataBase.getConn().createStatement();
+        ResultSet rs_gasto = stmt_gasto.executeQuery(sentencia);
+        rs_gasto.next();
+        float gasto;
+        if (Objects.equals(rs_gasto.getString(1), "null")) {
+            gasto = 0;
+        } else {
+            gasto = rs_gasto.getFloat(1);
+        }
+        gasto -= precio_anterior;
+        gasto += producto.getPrecio();
+        stmt_gasto.execute("UPDATE Cliente SET gastoTotal = "+gasto+" WHERE id = "+ producto.getId_cliente()+";");
     }
 
 }
