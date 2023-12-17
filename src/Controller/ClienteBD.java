@@ -24,7 +24,6 @@ public class ClienteBD {
         try {
             stmt = DataBase.getConn().createStatement();
             String consultaSQL="SELECT * FROM Producto WHERE cliCliente = "+ cliente +";";
-            System.out.println(consultaSQL);
             rs = stmt.executeQuery(consultaSQL);
         } catch (SQLException e) {
             System.out.println(e);
