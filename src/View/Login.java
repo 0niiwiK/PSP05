@@ -2,7 +2,7 @@ package View;
 
 import javax.swing.*;
 
-public class Login {
+public class Login extends JDialog{
     private JButton btn_login;
     private JTextField tf_usuario;
     private JLabel lbl_login;
