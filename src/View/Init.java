@@ -11,8 +11,9 @@ import java.sql.SQLException;
 public class Init extends JFrame {
     private JPanel panel1;
     private JButton btn_validar;
-    private JButton btn_visualizar;
+    private JButton btn_visualUsu;
     private JButton btn_acerca;
+    private JButton btn_visualProd;
     protected static Cliente cliente = null;
     
     public Init() {
@@ -24,18 +25,21 @@ public class Init extends JFrame {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        btn_validar.setText("Validar");
-        btn_visualizar.setText("Visualizar");
-        btn_acerca.setText("Acerca de...");
-        btn_visualizar.setEnabled(false);
         
+        btn_visualUsu.setEnabled(false);
+        btn_visualProd.setEnabled(false);
         
         btn_validar.addActionListener(e -> {
             showLogin();
         });
         
+        btn_visualUsu.addActionListener(e -> {
+            
+        });
         
+        btn_visualProd.addActionListener(e -> {
+            
+        });
     }
 
     private void showLogin() {
@@ -45,7 +49,8 @@ public class Init extends JFrame {
         frame.setSize(300, 250);
         frame.setVisible(true);
         if (cliente != null) {
-            btn_visualizar.setEnabled(true);
+            btn_visualUsu.setEnabled(true);
+            btn_visualProd.setEnabled(true);
         }
     }
 

@@ -23,7 +23,6 @@ public class Login extends JDialog {
                 Init.cliente = new Controller.ClienteLogin(tf_usuario.getText(), String.valueOf(pf_contrasenia.getPassword())).getCliente();
                 this.setVisible(false);
                 this.dispose();
-                
             } catch (MiExcepcion mie) {
                 JOptionPane.showMessageDialog(null, MError.getMensaje(mie.getCodigo()));
             }

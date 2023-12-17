@@ -1,5 +1,7 @@
 package View;
 
+import Model.Cliente;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,7 +13,8 @@ public class Visualizar_usuario {
     private JPanel jpanel1;
     private JPanel jp_image;
     private JLabel lbl_id;
-    ImageIcon imagen;
+    private ImageIcon imagen;
+    private Cliente cliente;
 
     public Visualizar_usuario() {
         tf_id.setEditable(false);
@@ -22,5 +25,9 @@ public class Visualizar_usuario {
         JLabel imageLabel = new JLabel(imagen);
         jp_image.setLayout(new BorderLayout());
         jp_image.add(imageLabel, BorderLayout.CENTER);
+        
+        btn_cambiaPass.addActionListener(e -> {
+            
+        });
     }
 }
