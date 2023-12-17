@@ -27,7 +27,7 @@ public class Visualizar_productos extends JDialog {
     private Cliente cliente;
     private ProductoBD pbd;
     
-    public Visualizar_productos(JDialog parent) {
+    public Visualizar_productos (JFrame parent) {
         super(parent, "Visualizar productos",true);
         cliente = Init.cliente;
         setContentPane(panel1);

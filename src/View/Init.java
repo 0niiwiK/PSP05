@@ -38,8 +38,16 @@ public class Init extends JFrame {
         });
         
         btn_visualProd.addActionListener(e -> {
-            
+            showProductos();
         });
+    }
+
+    private void showProductos() {
+        Visualizar_productos frame = new Visualizar_productos(this);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(300, 250);
+        frame.setVisible(true);
     }
 
     private void showLogin() {
