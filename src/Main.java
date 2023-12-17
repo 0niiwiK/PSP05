@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args){
         try {
             DataBase db = new DataBase();
-            db.inicializar();
+            db.cargarDatos();
             Statement stmt = db.obtenerStatement();
             introducirProducto(stmt, "Manzana", 1.20f, 1);
             introducirProducto(stmt, "Pera", 2.50f, 1);

@@ -1,32 +1,33 @@
 package Controller;
 
+import Model.MiExcepcion;
+
 import java.sql.*;
 
 public class DataBase {
     static String url = "jdbc:mysql://localhost:3307";
     static String user = "root";
     static String password = "mi-contrasena";
-    static Statement stmt;
-    static Connection conn;
-    public DataBase() throws SQLException {
-        createConnection();
-        createStatement();
-    }
+    static Connection conn = null;
     
-    public static void createConnection() throws SQLException {
+    public static void iniciar() throws MiExcepcion {
         conn = null;
-        conn = DriverManager.getConnection(url, user, password);
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            System.out.println(e);
+            System.out.println("Conexión ERROR");
+            throw new MiExcepcion(102);
+        }
     }
 
-    public static void createStatement() throws SQLException {
-        stmt = conn.createStatement();
+    public static Connection getConn() throws SQLException {
+        return conn;
     }
 
-    public static Statement obtenerStatement() throws SQLException {
-        return stmt;
-    }
 
-    public static void inicializar() throws SQLException {
+    public static void cargarDatos() throws SQLException {
+        Statement stmt = getConn().createStatement();
         stmt.executeUpdate("DROP SCHEMA IF EXISTS Tienda");
         stmt.executeUpdate("CREATE SCHEMA IF NOT EXISTS Tienda");
         stmt.executeUpdate("USE Tienda");
@@ -37,11 +38,19 @@ public class DataBase {
         stmt.execute("INSERT INTO Cliente (user, password) VALUES ('Usuario', 'Contrasenia');");
     }
 
-    public static void cerrar() {
+    public static boolean cerrar() throws MiExcepcion {
         try {
-            stmt.close();
-        } catch (SQLException e) {
+            conn.close();
+            //System.out.println("Conexión CERRADA");
+            return true;
+        }
+        catch (SQLException e) {
+            //Tomas: debug
             System.out.println(e.getMessage());
+            System.out.println("Conexión ERROR AL CERRAR");
+            //Tomas: aquí se guarda en el fichero de log: e.getMessge(), fecha y hora.
+            throw new MiExcepcion(103);
         }
     }
+
 }
