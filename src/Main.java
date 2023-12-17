@@ -9,9 +9,11 @@ import Model.Producto;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        Scanner src = new Scanner(System.in);
         try {
             DataBase.iniciar();
             DataBase.cargarDatos();
@@ -19,10 +21,39 @@ public class Main {
             System.out.println("Codigo: " + cliente.getId());
             ProductoBD productoBD = new ProductoBD(cliente.getId());
             char op;
-            do {
-                if (productoBD.esVacio())
+            if (!productoBD.esVacio()) {
+                productoBD.siguiente();
+                do {
+                    System.out.println(productoBD.leer());
+                    System.out.print("Opcion (s)iguiente, (a)nterior, (p)rimero, (u)ltimo, (0)cancelar: ");
+                    op = src.nextLine().charAt(0);
+                    switch (op) {
+                        case 's':
+                            if (productoBD.esUltimo())
+                                System.out.println("No hay mas elementos");
+                            else
+                                productoBD.siguiente();
+                            break;
+                        case 'a':
+                            if (productoBD.esPrimero())
+                                System.out.println("No hay mas elementos");
+                            else
+                                productoBD.siguiente();
+                            break;
+                        case 'p':
+                            if (productoBD.primero())
+                                break;
+                        case 'u':
+                            if (productoBD.ultimo())
+                                break;
+                        case '0':
+                            break;
+                    }
+                    System.out.println("");
+                }
+                while (op != '0');
             }
-            while (true);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } catch (MiExcepcion e) {
