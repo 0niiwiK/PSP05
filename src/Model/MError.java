@@ -15,20 +15,17 @@ public class MError {
     
     public static String getMensaje(int cod) {
         mensaje = "Error "+ cod + ": ";
-        switch(cod) {
-            case 101:
-                mensaje = mensaje + "al cargar los drivers de la base de datos";
-                break;
-            case 102:
-                mensaje = mensaje + "al abrir la base de datos";
-                break;
+        switch (cod) {
+            case 101 -> mensaje = mensaje + "al cargar los drivers de la base de datos";
+            case 102 -> mensaje = mensaje + "al abrir la base de datos";
+
             //Tomas: más casos
-            case 103:
-                mensaje = mensaje + "al cerrar la base de datos";
-                break;
+            case 103 -> mensaje = mensaje + "al cerrar la base de datos";
+            case 104 -> mensaje = mensaje + "usuario o contraseña incorrectos";
+            case 105 -> mensaje = mensaje + "no se pueden obtener los datos de este usuario";
+
             //Tomas: más casos
-            default:
-                mensaje = mensaje + "DESCONOCIDO";
+            default -> mensaje = mensaje + "DESCONOCIDO";
         }
         return mensaje;
     }
