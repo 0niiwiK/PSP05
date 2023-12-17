@@ -14,12 +14,13 @@ public class Login extends JDialog {
     private JPasswordField pf_contrasenia;
     private JPanel panel1;
     
-    public Login(Cliente[] cliente) {
+    public Login(JFrame parent) {
+        super(parent, "Iniciar Sesion",true);
         setContentPane(panel1);
 
         btn_login.addActionListener(e -> {
             try {
-                cliente[0] = new Controller.ClienteLogin(tf_usuario.getText(), String.valueOf(pf_contrasenia.getPassword())).getCliente();
+                Init.cliente = new Controller.ClienteLogin(tf_usuario.getText(), String.valueOf(pf_contrasenia.getPassword())).getCliente();
                 this.setVisible(false);
                 this.dispose();
                 

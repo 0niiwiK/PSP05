@@ -8,12 +8,12 @@ import Model.MiExcepcion;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class Init {
+public class Init extends JFrame {
     private JPanel panel1;
     private JButton btn_validar;
     private JButton btn_visualizar;
     private JButton btn_acerca;
-    private Cliente cliente = null;
+    protected static Cliente cliente = null;
     
     public Init() {
         try {
@@ -32,20 +32,21 @@ public class Init {
         
         
         btn_validar.addActionListener(e -> {
-            Cliente[] cliente1 = new Cliente[1];
-            cliente1[0] = null;
-            Login frame = new Login(cliente1);
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(300, 250);
-            frame.setVisible(true);
-            cliente = cliente1[0];
-            if (this.cliente != null) {
-                btn_visualizar.setEnabled(true);
-            }
+            showLogin();
         });
         
         
+    }
+
+    private void showLogin() {
+        Login frame = new Login(this);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(300, 250);
+        frame.setVisible(true);
+        if (cliente != null) {
+            btn_visualizar.setEnabled(true);
+        }
     }
 
     public static void main(String[] args) {
