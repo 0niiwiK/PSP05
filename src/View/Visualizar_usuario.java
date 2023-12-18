@@ -66,14 +66,15 @@ public class Visualizar_usuario extends JDialog {
         
         btn_cambiaPass.addActionListener(e -> {
             JTextField textField = new JTextField();
-            JOptionPane.showOptionDialog(null, textField, "Introduzca nueva contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
-            String password;
-            if (textField.getText() != null) {
-                password = textField.getText();
-            }else {
-                password = cliente.getPassword();
+            if (JOptionPane.showOptionDialog(null, textField, "Introduzca nueva contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null) == JOptionPane.OK_OPTION) {
+                String password;
+                if (textField.getText() != null) {
+                    password = textField.getText();
+                }else {
+                    password = cliente.getPassword();
+                }
+                cbd.actualizarContrasenia(cliente, password);
             }
-            cbd.actualizarContrasenia(cliente, password);
         });
     }
 
