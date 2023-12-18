@@ -79,9 +79,12 @@ public class Visualizar_productos extends JDialog {
     private void mostrar() {
         Producto p = pbd.leer();
         tf_id.setText(String.valueOf(p.getId()));
+        tf_id.setEditable(false);
         tf_nombre.setText(p.getNombre());
+        tf_nombre.setEditable(false);
         dateChooser.setDate(p.getFecha_compra_date());
         tf_precio.setText(String.valueOf(p.getPrecio()));
+        tf_precio.setEditable(false);
         btn_anterior.setEnabled(!pbd.esPrimero());
         btn_siguiente.setEnabled(!pbd.esUltimo());
         btn_modificar.setEnabled(true);
