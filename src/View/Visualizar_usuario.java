@@ -59,9 +59,17 @@ public class Visualizar_usuario extends JDialog {
         };
 
         jp_image.add(jimage);
-
+        
         btn_cambiaPass.addActionListener(e -> {
-            cbd.actualizarContrasenia(cliente);
+            JTextField textField = new JTextField();
+            JOptionPane.showOptionDialog(null, textField, "Introduzca nueva contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+            String password;
+            if (textField.getText() != null) {
+                password = textField.getText();
+            }else {
+                password = cliente.getPassword();
+            }
+            cbd.actualizarContrasenia(cliente , password);
         });
     }
 }

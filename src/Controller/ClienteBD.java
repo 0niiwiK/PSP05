@@ -65,15 +65,15 @@ public class ClienteBD {
             throw new MiExcepcion(105);
         }
     }
-    
-    public void actualizarContrasenia(Cliente cliente){
+
+    public void actualizarContrasenia(Cliente cliente, String password) {
         try {
             Statement stmt = DataBase.getConn().createStatement();
-            stmt.executeUpdate("UPDATE Cliente SET password = '" + cliente.getPassword() + "' WHERE id = " + cliente.getId() + ";");
+            stmt.executeUpdate("UPDATE Cliente SET password = '" + password + "' WHERE id = " + cliente.getId() + ";");
         } catch (SQLException ex) {
             Logger.getLogger(ClienteBD.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
 
 
     public void cerrar(){
