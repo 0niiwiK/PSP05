@@ -13,6 +13,7 @@ public class Visualizar_usuario extends JDialog {
     private JPanel jpanel1;
     private JPanel jp_image;
     private JLabel lbl_id;
+    private JList list_usuario;
     private ImageIcon imagen;
     private Cliente cliente;
 
@@ -38,6 +39,7 @@ public class Visualizar_usuario extends JDialog {
             jp_image.setLayout(new BorderLayout());
             jp_image.add(imageLabel, BorderLayout.CENTER);
         }
+        
         
         
         btn_cambiaPass.addActionListener(e -> {
