@@ -54,7 +54,7 @@ public class Visualizar_usuario extends JDialog {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(imagen.getImage(), 0, 0, 150, 150, this);
+                g.drawImage(imagen.getImage(), 20, 0, 150, 150, this);
             }
         };
 
