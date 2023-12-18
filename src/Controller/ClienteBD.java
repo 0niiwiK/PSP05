@@ -75,6 +75,15 @@ public class ClienteBD {
         }
     }
 
+    public void actualizarGastoTotal(Cliente cliente, float gastoTotal) {
+        try {
+            Statement stmt = DataBase.getConn().createStatement();
+            stmt.executeUpdate("UPDATE Cliente SET gastoTotal = " + gastoTotal + " WHERE id = " + cliente.getId() + ";");
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     public void cerrar(){
         try {

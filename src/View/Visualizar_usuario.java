@@ -22,7 +22,9 @@ public class Visualizar_usuario extends JDialog {
     private ImageIcon imagen;
     private Cliente cliente;
     private DefaultListModel<String> listModel;
+    private ArrayList<Producto> lista_productos;
     private ClienteBD cbd;
+    private float total = 0;
 
     public Visualizar_usuario(JFrame parent) {
         super(parent, "Visualizar Usuario",true);
@@ -33,10 +35,11 @@ public class Visualizar_usuario extends JDialog {
         setContentPane(jpanel1);
         tf_id.setText(String.valueOf(cliente.getId()));
         tf_nombre.setText(cliente.getUser());
+        actualizarGastoTotal();
         tf_total.setText(String.valueOf(cliente.getGastoTotal()));
 
         cbd = new ClienteBD(cliente.getId());
-        ArrayList<Producto> lista_productos = cbd.getProductos();
+        lista_productos = cbd.getProductos();
         listModel = new DefaultListModel<>();
         listModel.addAll(lista_productos.stream().map(Producto::getListItem).toList());
         list_usuario.setModel(listModel);
@@ -69,7 +72,16 @@ public class Visualizar_usuario extends JDialog {
             }else {
                 password = cliente.getPassword();
             }
-            cbd.actualizarContrasenia(cliente , password);
+            cbd.actualizarContrasenia(cliente, password);
         });
+    }
+
+    private void actualizarGastoTotal() {
+
+        lista_productos.forEach(producto -> {
+            total += producto.getPrecio();
+        });
+        Init.cliente.setGastoTotal(total);
+        cbd.actualizarGastoTotal(cliente, total);
     }
 }
