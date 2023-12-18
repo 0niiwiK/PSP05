@@ -56,8 +56,4 @@ public class Visualizar_usuario extends JDialog {
             cbd.actualizarContrasenia(cliente);
         });
     }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
