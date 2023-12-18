@@ -18,6 +18,7 @@ public class Visualizar_usuario extends JDialog {
     private JLabel lbl_id;
     private JList list_usuario;
     private JScrollPane scrollPane;
+    private JLabel jimage;
     private ImageIcon imagen;
     private Cliente cliente;
     private DefaultListModel<String> listModel;
@@ -39,19 +40,26 @@ public class Visualizar_usuario extends JDialog {
         listModel = new DefaultListModel<>();
         listModel.addAll(lista_productos.stream().map(Producto::getListItem).toList());
         list_usuario.setModel(listModel);
+
+
         
         if (cliente.getImagen() != null) {
             imagen = new ImageIcon(cliente.getImagen());
-            JLabel imageLabel = new JLabel(imagen);
-            jp_image.setLayout(new BorderLayout());
-            jp_image.add(imageLabel, BorderLayout.CENTER);
-        }else {
+        } else {
             imagen = new ImageIcon("src/Images/icon.png");
-            JLabel imageLabel = new JLabel(imagen);
-            jp_image.setLayout(new BorderLayout());
-            jp_image.add(imageLabel, BorderLayout.CENTER);
         }
-        
+
+        jp_image.setLayout(new BorderLayout());
+        jimage = new JLabel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(imagen.getImage(), 0, 0, 150, 150, this);
+            }
+        };
+
+        jp_image.add(jimage);
+
         btn_cambiaPass.addActionListener(e -> {
             cbd.actualizarContrasenia(cliente);
         });
