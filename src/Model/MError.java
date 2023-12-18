@@ -23,6 +23,7 @@ public class MError {
             case 103 -> mensaje = mensaje + "al cerrar la base de datos";
             case 104 -> mensaje = mensaje + "usuario o contraseña incorrectos";
             case 105 -> mensaje = mensaje + "no se pueden obtener los datos de este usuario";
+            case 106 -> mensaje = mensaje + "no se puede acceder a la base de datos";
 
             //Tomas: más casos
             default -> mensaje = mensaje + "DESCONOCIDO";
