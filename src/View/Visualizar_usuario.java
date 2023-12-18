@@ -28,11 +28,11 @@ public class Visualizar_usuario extends JDialog {
 
     public Visualizar_usuario(JFrame parent) {
         super(parent, "Visualizar Usuario",true);
-        cbd = new ClienteBD(cliente.getId());
         tf_id.setEditable(false);
         tf_nombre.setEditable(false);
         tf_total.setEditable(false);
         cliente = Init.cliente;
+        cbd = new ClienteBD(cliente.getId());
         setContentPane(jpanel1);
         tf_id.setText(String.valueOf(cliente.getId()));
         tf_nombre.setText(cliente.getUser());
