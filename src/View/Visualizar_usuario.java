@@ -28,6 +28,7 @@ public class Visualizar_usuario extends JDialog {
 
     public Visualizar_usuario(JFrame parent) {
         super(parent, "Visualizar Usuario",true);
+        cbd = new ClienteBD(cliente.getId());
         tf_id.setEditable(false);
         tf_nombre.setEditable(false);
         tf_total.setEditable(false);
@@ -35,14 +36,14 @@ public class Visualizar_usuario extends JDialog {
         setContentPane(jpanel1);
         tf_id.setText(String.valueOf(cliente.getId()));
         tf_nombre.setText(cliente.getUser());
-        actualizarGastoTotal();
-        tf_total.setText(String.valueOf(cliente.getGastoTotal()));
-
-        cbd = new ClienteBD(cliente.getId());
         lista_productos = cbd.getProductos();
         listModel = new DefaultListModel<>();
         listModel.addAll(lista_productos.stream().map(Producto::getListItem).toList());
         list_usuario.setModel(listModel);
+        actualizarGastoTotal();
+        tf_total.setText(String.valueOf(cliente.getGastoTotal()));
+
+
 
 
         
