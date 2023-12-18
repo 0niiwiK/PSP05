@@ -97,11 +97,11 @@ public class Init extends JFrame implements WindowListener {
     }
 
     private void showUsuario() {
-        /*Visualizar_usuario frame = new Visualizar_usuario(this);
+        Visualizar_usuario frame = new Visualizar_usuario(this);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 250);
-        frame.setVisible(true);*/
+        frame.setVisible(true);
     }
 
     private void showProductos() {
