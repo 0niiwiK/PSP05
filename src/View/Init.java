@@ -100,7 +100,7 @@ public class Init extends JFrame implements WindowListener {
         Visualizar_usuario frame = new Visualizar_usuario(this);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500, 250);
+        frame.setSize(500, 500);
         frame.setVisible(true);
     }
 
