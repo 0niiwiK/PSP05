@@ -18,6 +18,11 @@ public class Login extends JDialog {
         super(parent, "Iniciar Sesion",true);
         setContentPane(panel1);
 
+        btn_salir.addActionListener(e -> {
+            this.setVisible(false);
+            this.dispose();
+        });
+
         btn_login.addActionListener(e -> {
             try {
                 Init.cliente = new Controller.ClienteLogin(tf_usuario.getText(), String.valueOf(pf_contrasenia.getPassword())).getCliente();

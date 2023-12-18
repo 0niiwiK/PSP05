@@ -6,6 +6,7 @@
 package Model;
 
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Producto {
@@ -82,7 +83,11 @@ public class Producto {
         fmt.setCalendar(calendar);
         return fmt.format(calendar.getTime());
     }
-    
-    
-    
+
+
+    public void setFecha_compra_date(Date date) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        this.setFecha_compra(calendar);
+    }
 }

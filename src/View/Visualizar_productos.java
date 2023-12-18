@@ -8,6 +8,8 @@ import com.toedter.calendar.JTextFieldDateEditor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Visualizar_productos extends JDialog {
     private JButton btn_anterior;
@@ -55,7 +57,23 @@ public class Visualizar_productos extends JDialog {
             if (pbd.siguiente())
                 mostrar();
         });
+
+        btn_salir.addActionListener(e -> {
+            pbd.cerrar();
+            this.setVisible(false);
+            this.dispose();
+        });
+
+        btn_modificar.addActionListener(e -> {
+            modificar();
+        });
         
+    }
+
+    private void modificar() {
+        Producto p = pbd.leer();
+        p.setFecha_compra_date(dateChooser.getDate());
+        pbd.update(p);
     }
 
     private void mostrar() {
@@ -70,6 +88,7 @@ public class Visualizar_productos extends JDialog {
     }
 
     private void bloquear() {
+        dateChooser.setEnabled(false);
         btn_anterior.setEnabled(false);
         btn_siguiente.setEnabled(false);
         btn_modificar.setEnabled(false);
