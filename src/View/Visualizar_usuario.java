@@ -17,6 +17,7 @@ public class Visualizar_usuario extends JDialog {
     private JPanel jp_image;
     private JLabel lbl_id;
     private JList list_usuario;
+    private JScrollPane scrollPane;
     private ImageIcon imagen;
     private Cliente cliente;
     private DefaultListModel<String> listModel;
@@ -54,5 +55,9 @@ public class Visualizar_usuario extends JDialog {
         btn_cambiaPass.addActionListener(e -> {
             cbd.actualizarContrasenia(cliente);
         });
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
